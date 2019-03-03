@@ -68,7 +68,7 @@ module Stack : STACK =
     type 'a stack = 'a list
 
     (* empty -- An empty stack *)
-    let empty : 'a stack = 'a stack = []
+    let empty : 'a stack = []
 
     (* push i s -- Adds an element i to the top of stack s *)
     let push (i : 'a) (s : 'a stack) : 'a stack = i::s
@@ -77,7 +77,7 @@ module Stack : STACK =
        stack and a stack containing the remaining elements *)
     let pop_helper (s : 'a stack) : ('a * 'a stack) =
       match s with
-      | empty -> EmptyStack
+      | [] -> raise EmptyStack
       | hd::tl -> hd, tl
       
     let top (s: 'a stack) : 'a =
@@ -95,7 +95,6 @@ pushed in order: "Computer", "Science", "51".
 
 let s = fun _ -> 
 let open Stack in 
-let type = string list in
 empty
 |> push "Computer"
 |> push "Science"
