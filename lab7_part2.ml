@@ -17,7 +17,6 @@ files to complete all exercises:
 
  *)
 
-
 (*======================================================================
 Part 2: Files as modules
 
@@ -71,7 +70,9 @@ Exercise 2A: Extract the red channel of the color named Red, naming
 the result "red_channel".
 ......................................................................*)
 
-let red_channel : int = 0 ;;
+let red_channel : int = 
+    Color.red (Color.color_named Color.Red) ;;
+
 
 (* We hope you'll find the module system quite useful, once you get
 the hang of the conventions.
@@ -93,7 +94,38 @@ want revealed to the user and which you would prefer to be hidden.
 Once you have color.mli implemented, you should still be able to
 compile color.ml and run color.byte.
 ......................................................................*)
+(*code for color.mli
 
+module type COLOR =
+sig
+    (* 8-bit RGB channel colors *)
+    type color ;;
+
+    (* Some standard color names *)
+    type color_name =
+      | Red | Green | Blue
+      | Orange | Yellow | Indigo | Violet ;;
+
+    (* to_color r g b -- Returns the color corresponding to the RGB
+      values given by r, g, and b *)
+    val to_color :  int -> int -> int -> color ;;
+
+    (* red c -- Returns the red channel value for the color c *)
+    val red : color -> int  ;;
+
+    (* green c -- Returns the green channel value for the color c *)
+    val green : color -> int  ;;
+
+    (* blue c -- Returns the blue channel value for the color c *)
+    val blue : color -> int  ;;
+
+    (* color_named name -- Returns the color (as RGB representation)
+      corresponding to the color name *)
+    val color_named : color_name -> color ;;
+
+  end
+  
+  *)
 
 (*......................................................................
 Exercise 2C: 
