@@ -69,13 +69,13 @@ module IntListStack =
     (* top s -- Returns the value of the topmost element on stack s *)
     let top (s : stack) : int = 
       match s with
-      | []  -> raise (Invalid_argument "please provide non-empty stack")
+      | [] -> raise EmptyStack
       | hd::_ -> hd
 
     (* pop s -- Returns a stack with the topmost element from s removed *)
     let pop (s : stack) : stack = 
       match s with
-      | []  -> raise (Invalid_argument "please provide non-empty stack")
+      | []  -> raise EmptyStack
       | _::tl -> tl
 
   end ;;
