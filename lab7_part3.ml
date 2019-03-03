@@ -61,7 +61,7 @@ module IntListStack =
     type stack = int list
 
     (* empty -- An empty stack *)
-    let empty : []
+    let empty : stack = []
 
     (* push i s -- Adds an integer element i to the top of stack s *)
     let push (i : int) (s : stack) : stack = i::s
@@ -69,13 +69,13 @@ module IntListStack =
     (* top s -- Returns the value of the topmost element on stack s *)
     let top (s : stack) : int = 
       match s with
-      | []  -> (Invalid_argument "please provide non-empty stack")
+      | []  -> raise (Invalid_argument "please provide non-empty stack")
       | hd::_ -> hd
 
     (* pop s -- Returns a stack with the topmost element from s removed *)
     let pop (s : stack) : stack = 
       match s with
-      | []  -> (Invalid_argument "please provide non-empty stack")
+      | []  -> raise (Invalid_argument "please provide non-empty stack")
       | _::tl -> tl
 
   end ;;

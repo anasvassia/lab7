@@ -63,7 +63,7 @@ module Math : MATH =
     let cos angle = cos angle
     let sin angle = sin angle
     let sum num1 num2 = num1 +. num2
-    let rec max lst = 
+    let max lst = 
       match lst with
       | []  -> None
       | hd::tl -> Some (List.fold_left Pervasives.max hd tl)
