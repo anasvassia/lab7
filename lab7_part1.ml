@@ -17,6 +17,7 @@ files to complete all exercises:
 
  *)
 
+
 (*======================================================================
 Part 1: Implementing Modules
 
@@ -58,11 +59,14 @@ temporary value pending your putting in appropriate ones.)
 
 module Math : MATH =
   struct
-    let pi = nan
-    let cos _ = nan
-    let sin _ = nan
-    let sum _ _ = nan
-    let max _ = None
+    let pi = 4. *. atan 1. (*pi apparently doesn't exist in OCaml???*)
+    let cos angle = cos angle
+    let sin angle = sin angle
+    let sum num1 num2 = num1 +. num2
+    let rec max lst = 
+      match lst with
+      | []  -> None
+      | hd::tl -> Some (List.fold_left Pervasives.max hd tl)
   end ;;
 
 (*......................................................................
@@ -72,7 +76,7 @@ type float option. Name the resulting value "result". (Do not use a
 local open for this exercise.)
 ......................................................................*)
 
-let result = Some nan ;;
+let result = Math.max [(Math.cos Math.pi); (Math.sin Math.pi)] ;;
 
 (*......................................................................
 Exercise 1C: Reimplement the computation from 1B above, now as
@@ -80,4 +84,6 @@ Exercise 1C: Reimplement the computation from 1B above, now as
 in a more succinct manner.
 ......................................................................*)
 
-let result_local_open = Some nan ;;
+open  Math
+
+let result_local_open = max [(cos pi); (sin pi)] ;;
